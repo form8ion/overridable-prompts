@@ -6,7 +6,7 @@ before_script:
   - npm ls >/dev/null
 after_success: 'npm run coverage:report'
 import:
-  - source: 'form8ion/.travis-ci:authenticated-semantic-release.yml'
+  - source: form8ion/.travis-ci:authenticated-semantic-release.yml
 env:
   global:
     - FORCE_COLOR=1
