@@ -16,7 +16,7 @@ overriden with provided answers
 ### Installation
 
 ```sh
-$ npm install @form8ion/overridable-prompts
+$ npm install @form8ion/overridable-prompts --save-prod
 ```
 
 ## Contributing
