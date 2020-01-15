@@ -27,8 +27,8 @@ suite('prompt', () => {
   });
 
   test('that decisions are directly included in answers, with those questions excluded from prompts', async () => {
-    const decisions = any.simpleObject();
-    const questionNames = Object.keys(decisions);
+    const questionNames = any.listOf(any.word);
+    const decisions = any.objectWithKeys(questionNames, {factory: any.boolean});
     inquirer.prompt.withArgs(questions).resolves(answers);
 
     assert.deepEqual(

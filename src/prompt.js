@@ -2,7 +2,7 @@ import {prompt} from 'inquirer';
 
 export default async function (questions, decisions = {}) {
   const {filteredQuestions, providedAnswers} = questions.reduce((acc, question) => {
-    if (decisions[question.name]) {
+    if (undefined !== decisions[question.name]) {
       return {
         filteredQuestions: acc.filteredQuestions,
         providedAnswers: {...acc.providedAnswers, [question.name]: decisions[question.name]}
