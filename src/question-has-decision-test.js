@@ -9,6 +9,10 @@ suite('question has decision', () => {
     assert.isFalse(questionHasDecision(any.word(), any.simpleObject()));
   });
 
+  test('that `false` is returned when no decisions are provided', () => {
+    assert.isFalse(questionHasDecision(any.word()));
+  });
+
   test('that `true` is returned for a string value decision', () => {
     assert.isTrue(questionHasDecision(questionName, {...any.simpleObject(), [questionName]: any.word()}));
   });

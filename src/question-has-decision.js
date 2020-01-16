@@ -1,3 +1,3 @@
-export default function (questionName, decisions) {
+export default function (questionName, decisions = {}) {
   return undefined !== decisions[questionName];
 }
