@@ -1,5 +1,7 @@
 # overridable-prompts
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/form8ion/overridable-prompts.svg)](https://greenkeeper.io/)
+
 [Inquirer](https://github.com/SBoudrias/Inquirer.js/) prompts that can be
 overriden with provided answers
 
