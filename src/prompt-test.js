@@ -12,6 +12,8 @@ suite('prompt', () => {
     ...any.simpleObject(),
     name: any.word()
   }));
+  const questionNames = any.listOf(any.word);
+  const decisions = any.objectWithKeys(questionNames);
 
   setup(() => {
     sandbox = sinon.createSandbox();
@@ -31,8 +33,6 @@ suite('prompt', () => {
   });
 
   test('that decisions are directly included in answers, with those questions excluded from prompts', async () => {
-    const questionNames = any.listOf(any.word);
-    const decisions = any.objectWithKeys(questionNames);
     inquirer.prompt.withArgs(questions).resolves(answers);
     questionNames.forEach(name => decisionFinder.default.withArgs(name, decisions).returns(true));
 
@@ -40,5 +40,12 @@ suite('prompt', () => {
       await prompt([...questions, ...questionNames.map(name => ({...any.simpleObject(), name}))], decisions),
       {...answers, ...decisions}
     );
+  });
+
+  test('that inquirer is not invoked if all questions have decisions provided', async () => {
+    questionNames.forEach(name => decisionFinder.default.withArgs(name, decisions).returns(true));
+
+    assert.deepEqual(await prompt(questionNames.map(name => ({...any.simpleObject(), name})), decisions), decisions);
+    assert.notCalled(inquirer.prompt);
   });
 });

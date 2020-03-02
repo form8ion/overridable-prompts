@@ -16,5 +16,5 @@ export default async function (questions, decisions) {
     };
   }, {filteredQuestions: [], providedAnswers: {}});
 
-  return {...await prompt(filteredQuestions), ...providedAnswers};
+  return {...0 < filteredQuestions.length && await prompt(filteredQuestions), ...providedAnswers};
 }
