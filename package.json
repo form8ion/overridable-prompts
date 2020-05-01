@@ -31,7 +31,9 @@
     "prepack": "run-s build",
     "test:unit": "nyc run-s test:unit:base",
     "test:unit:base": "DEBUG=any mocha 'src/**/*-test.js'",
-    "coverage:report": "nyc report --reporter=text-lcov > coverage.lcov && codecov"
+    "coverage:report": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "devDependencies": {
     "@babel/register": "^7.7.0",
@@ -58,6 +60,8 @@
     "travis-lint": "^1.0.0"
   },
   "dependencies": {
-    "inquirer": "^7.0.3"
-  }
+    "inquirer": "^7.0.3",
+    "snyk": "^1.316.1"
+  },
+  "snyk": true
 }
