@@ -55,7 +55,8 @@ import {prompt} from '@form8ion/overridable-prompts';
       },
       {
         name: 'Question #2',
-        message: 'What should we ask second?'
+        message: 'What should we ask second?',
+        when: answerList => 'Provided answer for `Question #1`' === answerList['Question #1']
       }
     ],
     {
