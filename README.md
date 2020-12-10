@@ -46,8 +46,6 @@ import {prompt} from '@form8ion/overridable-prompts';
 
 #### Execute
 
-eslint-disable-next-line no-unused-vars
-
 ```javascript
   const answers = await prompt(
     [
@@ -65,7 +63,6 @@ eslint-disable-next-line no-unused-vars
       'Question #2': 'Provided answer for `Question #2`'
     }
   );
-})();
 ```
 
 ## Contributing

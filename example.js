@@ -3,7 +3,7 @@ import {prompt} from './lib/index.cjs';
 
 // #### Execute
 
-// remark-usage-ignore-next
+// remark-usage-ignore-next 2
 (async function () {
 // eslint-disable-next-line no-unused-vars
   const answers = await prompt(
@@ -22,4 +22,5 @@ import {prompt} from './lib/index.cjs';
       'Question #2': 'Provided answer for `Question #2`'
     }
   );
-})();
+// remark-usage-ignore-next
+}());
