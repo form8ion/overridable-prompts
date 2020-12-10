@@ -21,10 +21,10 @@
     "lint:lockfile": "lockfile-lint --path package-lock.json --type npm --validate-https --allowed-hosts npm",
     "lint:js": "eslint . --cache",
     "lint:md": "remark . --frail",
+    "lint:peer": "npm ls >/dev/null",
     "generate:md": "remark . --output",
     "pregenerate:md": "npm run build",
     "lint:sensitive": "ban",
-    "lint:travis": "travis-lint .travis.yml",
     "clean": "rimraf ./lib",
     "prebuild": "run-s clean",
     "build": "npm-run-all --print-label --parallel build:*",
@@ -58,8 +58,7 @@
     "rimraf": "3.0.2",
     "rollup": "2.34.2",
     "rollup-plugin-auto-external": "2.0.0",
-    "sinon": "9.1.0",
-    "travis-lint": "1.0.0"
+    "sinon": "9.1.0"
   },
   "dependencies": {
     "inquirer": "^7.0.3"
