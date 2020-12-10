@@ -9,6 +9,17 @@ overriden with provided answers
 
 <!--status-badges end -->
 
+## Table of Contents
+
+* [Usage](#usage)
+  * [Installation](#installation)
+  * [Example](#example)
+    * [Import](#import)
+    * [Execute](#execute)
+* [Contributing](#contributing)
+  * [Dependencies](#dependencies)
+  * [Verification](#verification)
+
 ## Usage
 
 <!--consumer-badges start -->
@@ -23,6 +34,38 @@ overriden with provided answers
 
 ```sh
 $ npm install @form8ion/overridable-prompts --save-prod
+```
+
+### Example
+
+#### Import
+
+```javascript
+import {prompt} from '@form8ion/overridable-prompts';
+```
+
+#### Execute
+
+eslint-disable-next-line no-unused-vars
+
+```javascript
+  const answers = await prompt(
+    [
+      {
+        name: 'Question #1',
+        message: 'What should we ask first?'
+      },
+      {
+        name: 'Question #2',
+        message: 'What should we ask second?'
+      }
+    ],
+    {
+      'Question #1': 'Provided answer for `Question #1`',
+      'Question #2': 'Provided answer for `Question #2`'
+    }
+  );
+})();
 ```
 
 ## Contributing
