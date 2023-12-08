@@ -1,5 +1,5 @@
 // #### Import
-import {prompt} from './lib/index.cjs';
+import {prompt} from './lib/index.cjs.js';
 
 // #### Execute
 

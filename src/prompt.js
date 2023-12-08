@@ -1,6 +1,7 @@
 import {prompt} from 'inquirer';
-import questionHasDecision from './question-has-decision';
-import enhancePredicate from './predicate-enhancer';
+
+import questionHasDecision from './question-has-decision.js';
+import enhancePredicate from './predicate-enhancer.js';
 
 export default async function (questions, decisions) {
   const {

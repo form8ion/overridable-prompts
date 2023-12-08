@@ -1,6 +1,7 @@
 import {assert} from 'chai';
 import any from '@travi/any';
-import questionHasDecision from './question-has-decision';
+
+import questionHasDecision from './question-has-decision.js';
 
 suite('question has decision', () => {
   const questionName = any.word();
