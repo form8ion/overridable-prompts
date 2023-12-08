@@ -1,10 +1,12 @@
 import inquirer from 'inquirer';
+
 import sinon from 'sinon';
 import any from '@travi/any';
 import {assert} from 'chai';
-import * as decisionFinder from './question-has-decision';
-import * as predicateEnhancer from './predicate-enhancer';
-import prompt from './prompt';
+
+import * as decisionFinder from './question-has-decision.js';
+import * as predicateEnhancer from './predicate-enhancer.js';
+import prompt from './prompt.js';
 
 suite('prompt', () => {
   let sandbox;

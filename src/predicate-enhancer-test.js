@@ -1,7 +1,8 @@
 import sinon from 'sinon';
 import any from '@travi/any';
 import {assert} from 'chai';
-import enhancePredicate from './predicate-enhancer';
+
+import enhancePredicate from './predicate-enhancer.js';
 
 suite('predicate enhancer', () => {
   test('that the decisions and answers get merged', () => {
