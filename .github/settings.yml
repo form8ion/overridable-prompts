@@ -2,7 +2,7 @@ _extends: .github
 repository:
   name: overridable-prompts
   description: Inquirer prompts that can be overriden with provided answers
-  homepage: 'https://npm.im/@form8ion/overridable-prompts'
+  homepage: https://www.npmjs.com/package/@form8ion/overridable-prompts
   private: false
 branches:
   - name: master
