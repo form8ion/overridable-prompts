@@ -1,9 +1,9 @@
-import {prompt} from 'inquirer';
+import {prompt as promptWithInquirer} from 'inquirer';
 
 import questionHasDecision from './question-has-decision.js';
 import enhancePredicate from './predicate-enhancer.js';
 
-export default async function (questions, decisions) {
+export default async function prompt(questions, decisions) {
   const {
     filteredQuestions,
     providedAnswers
@@ -29,5 +29,5 @@ export default async function (questions, decisions) {
       providedAnswers: {}
     });
 
-  return {...0 < filteredQuestions.length && await prompt(filteredQuestions), ...providedAnswers};
+  return {...0 < filteredQuestions.length && await promptWithInquirer(filteredQuestions), ...providedAnswers};
 }

@@ -4,7 +4,7 @@ import {prompt} from './lib/index.cjs.js';
 // #### Execute
 
 // remark-usage-ignore-next 2
-(async function () {
+(async function example() {
 // eslint-disable-next-line no-unused-vars
   const answers = await prompt(
     [
