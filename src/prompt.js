@@ -3,31 +3,46 @@ import {prompt as promptWithInquirer} from 'inquirer';
 import questionHasDecision from './question-has-decision.js';
 import enhancePredicate from './predicate-enhancer.js';
 
+async function ensureProvidedAnswerIsValid(question, answer) {
+  if (!question.validate) return;
+
+  const validationResult = await question.validate(answer);
+
+  if (true === validationResult) return;
+
+  if ('string' === typeof validationResult) {
+    throw new Error(validationResult);
+  }
+
+  throw new Error(`Invalid value "${answer}" provided for question "${question.name}"`);
+}
+
 export default async function prompt(questions, decisions) {
-  const {
-    filteredQuestions,
-    providedAnswers
-  } = questions
-    .map(question => ({...question, ...question.when && {when: enhancePredicate(question.when, decisions)}}))
-    .reduce((acc, question) => {
+  const {filteredQuestions, providedAnswers} = await questions
+    .map(questionToEnhance => ({
+      ...questionToEnhance,
+      ...questionToEnhance.when && {when: enhancePredicate(questionToEnhance.when, decisions)}
+    }))
+    .reduce(async (accPromise, question) => {
+      const acc = await accPromise;
+
       if (questionHasDecision(question.name, decisions)) {
-        return {
-          filteredQuestions: acc.filteredQuestions,
-          providedAnswers: {
-            ...acc.providedAnswers,
-            [question.name]: decisions[question.name]
-          }
-        };
+        const answer = decisions[question.name];
+
+        await ensureProvidedAnswerIsValid(question, answer);
+
+        acc.providedAnswers[question.name] = answer;
+
+        return acc;
       }
 
-      return {
-        filteredQuestions: [...acc.filteredQuestions, question],
-        providedAnswers: acc.providedAnswers
-      };
-    }, {
+      acc.filteredQuestions.push(question);
+
+      return acc;
+    }, Promise.resolve({
       filteredQuestions: [],
       providedAnswers: {}
-    });
+    }));
 
   return {...0 < filteredQuestions.length && await promptWithInquirer(filteredQuestions), ...providedAnswers};
 }
