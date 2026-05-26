@@ -19,18 +19,18 @@
     "prelint:md": "npm run build",
     "lint:md": "remark . --frail",
     "lint:peer": "npm ls >/dev/null",
-    "generate:md": "remark . --output",
-    "pregenerate:md": "npm run build",
     "lint:sensitive": "ban",
-    "clean": "rimraf ./lib",
+    "test:unit": "cross-env NODE_ENV=test c8 run-s test:unit:base",
+    "test:unit:base": "DEBUG=any mocha 'src/**/*-test.js'",
     "prebuild": "run-s clean",
     "build": "npm-run-all --print-label --parallel build:*",
     "build:js": "rollup --config",
-    "watch": "run-s 'build:js -- --watch'",
+    "clean": "rimraf ./lib",
+    "pregenerate:md": "npm run build",
+    "generate:md": "remark . --output",
     "prepack": "run-s build",
-    "test:unit": "cross-env NODE_ENV=test c8 run-s test:unit:base",
-    "test:unit:base": "DEBUG=any mocha 'src/**/*-test.js'",
-    "prepare": "husky install"
+    "prepare": "husky",
+    "watch": "run-s 'build:js -- --watch'"
   },
   "files": [
     "lib/"
